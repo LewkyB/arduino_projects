@@ -9,15 +9,17 @@
 #include <PubSubClient.h>
 #include <ESP8266WiFi.h>
 
+#include "secrets.h"
+
 // wifi credentials
-const char *ssid =     "ssid_name";
-const char *password = "ssid_password";
+const char *ssid = ssid_name;
+const char *password = ssid_password;
 
 // MQTT
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-const char *mqtt_server = "rbp_ip";  // IP to broker (raspberry pi)
+const char *mqtt_server = rbp_ip;  // IP to broker (raspberry pi)
 
 // screen pinout
 #define TFT_CS  D0
