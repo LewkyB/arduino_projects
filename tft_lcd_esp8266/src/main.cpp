@@ -10,14 +10,14 @@
 #include <ESP8266WiFi.h>
 
 // wifi credentials
-const char *ssid =     "network_name";
-const char *password = "network_password";
+const char *ssid =     "ssid_name";
+const char *password = "ssid_password";
 
 // MQTT
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-const char *mqtt_server = "raspberry_pi_ip";  // IP to broker (raspberry pi)
+const char *mqtt_server = "rbp_ip";  // IP to broker (raspberry pi)
 
 // screen pinout
 #define TFT_CS  D0
