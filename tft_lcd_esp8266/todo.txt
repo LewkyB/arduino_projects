@@ -1,0 +1,7 @@
+[ ] - enable touchscreen
+
+[ ] - enable sd card
+[ ] - log temp to sd card
+
+[ ] - add buzzer
+[ ] - user enter desired temp, buzz when reached

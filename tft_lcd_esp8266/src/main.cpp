@@ -1,26 +1,4 @@
 /*
-    oven thermometer with MQTT
-
-    based on:
-      - https://github.com/pawl/oven_thermometer
-      - https://simple-circuit.com/esp8266-nodemcu-ili9341-tft-display/
-      - https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
-
-    parts:
-      - 2.8in SPI TFT ILI9341 screen
-      - MAX6675 temperature sensor 
-      - k-type thermocouple
-      - NODEMCU ESP8266
-      - RBP 3b+
-
-    software: 
-      - Node-RED - Low-code programming for event-driven applications 
-        - https://github.com/node-red/node-red
-        - installation script: https://github.com/node-red/linux-installers
-      - Mosquitto - MQTT broker 
-        - https://mosquitto.org/man/mosquitto-8.html
-      - Platformio - IDE
-
 */
 
 #include <Adafruit_GFX.h>
@@ -42,17 +20,17 @@ PubSubClient client(espClient);
 const char *mqtt_server = "raspberry_pi_ip";  // IP to broker (raspberry pi)
 
 // screen pinout
-#define TFT_CS  D2
-#define TFT_RST D3
-#define TFT_DC  D4
+#define TFT_CS  D0
+#define TFT_RST D1
+#define TFT_DC  D2
 
 // screen constructor
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 // MAX6675 pinout
+#define thermoSO  D4
+#define thermoCS  D3
 #define thermoSCK D8
-#define thermoSO  D1
-#define thermoCS  D0
 
 // MAX6675 constructor
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
@@ -138,11 +116,12 @@ void loop()
   tft.setTextSize(6);
 
   tft.printf("%.2f F\n", thermocouple.readFahrenheit());  // print temperature to screen
+  Serial.printf("%.2f F\n", thermocouple.readFahrenheit());
 
   tft.setTextSize(2);
   tft.print("Local IP: ");
   tft.println(WiFi.localIP());
-
+  
   if (!client.connected()) {
     reconnect();
   }
