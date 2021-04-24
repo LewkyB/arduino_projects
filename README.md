@@ -1,10 +1,11 @@
-# arduino_stuff
+# arduino_projects
 
 ## oven thermometer with MQTT ##
 
 Display temperature on screen and send temperate data to Node-RED UI through MQTT using RBP 3b+ as broker
-
-![oven thermometer schematic](https://github.com/LewkyB/arduino_stuff/blob/main/tft_lcd_esp8266/oven_thermometer_schematic.png)
+<p align="center">
+    <img width="250" alt="oven thermometer schematic" src="https://github.com/LewkyB/arduino_stuff/blob/main/tft_lcd_esp8266/oven_thermometer_schematic.png">
+</p>
 
 ### parts ###
   - 2.8in SPI TFT ILI9341 screen
@@ -17,7 +18,7 @@ Display temperature on screen and send temperate data to Node-RED UI through MQT
 - [Node-RED](https://github.com/node-red/node-red) 
     - [installation script](https://github.com/node-red/linux-installers) 
 - [Mosquitto](https://mosquitto.org/man/mosquitto-8.html)
-- PlatformIO
+- [PlatformIO VScode Plugin](https://platformio.org/)
 
 ### sources ###
   - https://github.com/pawl/oven_thermometer
