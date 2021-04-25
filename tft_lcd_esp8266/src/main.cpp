@@ -7,7 +7,12 @@
 #include <max6675.h>
 #include <Wire.h>
 #include <PubSubClient.h>
+
+#ifdef ESP8266
 #include <ESP8266WiFi.h>
+#else
+#include <WiFi.h> // for ESP32
+#endif
 
 #include "secrets.h"
 
